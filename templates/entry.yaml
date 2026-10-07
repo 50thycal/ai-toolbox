@@ -1,0 +1,27 @@
+schema_version: 1
+id: replace-with-stable-tool-id
+name: Replace with tool name
+repository: https://github.com/owner/repository
+description: What concrete problem this tool solves.
+categories: [developer-workflow]
+keywords: []
+stage: discovered
+reviewed_on: null
+tested_version: null
+compatibility:
+  stacks: []
+  platforms: []
+  notes: []
+use_when: []
+avoid_when: []
+limitations: []
+requirements: []
+cost:
+  license: Unknown
+  model_usage: Unknown or not applicable
+  infrastructure: Unknown
+evidence: []
+project_experience: []
+suggested_pilot: null
+setup_recipe: null
+history: []

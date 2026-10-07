@@ -1,0 +1,59 @@
+schema_version: 1
+id: testerarmy-e2e
+name: TesterArmy e2e
+repository: https://github.com/tester-army/e2e
+description: End-to-end testing framework combining natural-language agent actions with deterministic assertions.
+categories: [testing, browser-automation, ai-qa]
+keywords: [user-flows, regression-testing, exploratory-testing, pull-request-checks, playwright]
+stage: reviewed
+reviewed_on: '2026-10-07'
+tested_version: null
+compatibility:
+  stacks: [typescript, nextjs, vite]
+  platforms: [web, native-ios, native-android]
+  notes:
+    - Web engine uses Playwright; native mobile uses simulators or emulators through agent-device.
+    - Native mobile support does not establish full mobile-browser or real-device coverage.
+use_when:
+  - Checking complete user flows after application changes.
+  - Exploring a changed interface for functional defects.
+  - Combining adaptable UI navigation with precise outcome assertions.
+avoid_when:
+  - An exact calculation or trading-rule check can be covered directly by deterministic tests.
+  - Full real-iPhone behavior is required and only the narrow web viewport is configured.
+limitations:
+  - Pre-1.0 APIs and configuration can change between minor releases.
+  - AI assertions, waits, and extraction still call the model; cached actions do not eliminate all model usage.
+  - Web viewport resizing does not emulate touch or the full iPhone browser environment.
+  - Framework reliability and cost have not been measured in our apps.
+requirements:
+  - Compatible Node.js runtime and browser or simulator dependencies.
+  - A configured model provider for AI steps; deterministic tests need no model.
+  - Isolated test accounts and data for tests that write application state.
+cost:
+  license: Apache-2.0
+  model_usage: Provider-dependent; unmeasured in our projects.
+  infrastructure: Local or CI browser execution; hosted providers are optional.
+evidence:
+  - kind: documentation-review
+    date: '2026-10-07'
+    outcome: Promising candidate for app user-flow testing; no hands-on run completed.
+    sources:
+      - https://github.com/tester-army/e2e
+      - https://e2e.tester.army/docs/quickstart
+      - https://e2e.tester.army/docs/cache
+      - https://e2e.tester.army/docs/web
+      - https://e2e.tester.army/docs/ci
+      - https://e2e.tester.army/docs/security
+project_experience: []
+suggested_pilot:
+  project: Movie Time
+  status: proposed
+  scope: Five critical user flows on desktop and a phone-sized viewport using isolated test data.
+  measure: [functional-coverage, intermittent-failures, runtime, model-cost, maintenance-effort]
+  note: Proposed evaluation only; no pilot has been started or authorized by this catalog record.
+setup_recipe: null
+history:
+  - date: '2026-10-07'
+    stage: reviewed
+    reason: Reviewed repository and official documentation; recorded candidate use cases and limitations.
