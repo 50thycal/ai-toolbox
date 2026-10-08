@@ -11,6 +11,10 @@ This repository is a catalog, not an application. Use it to choose suitable tool
 5. Apply the user's authorized scope and project instructions. Choose a tool only when it solves the task better than the existing approach. Reading an entry does not run its commands or authorize unrelated changes.
 6. If the catalog cannot be retrieved, report that limitation briefly when relevant and proceed with available evidence. Do not claim the catalog was checked.
 
+## Reviewing a repository
+
+When asked to review, add, or reevaluate a candidate repository for Calvin's projects, read and follow [Review Repo for Toolbox](skills/review-repo-for-toolbox/SKILL.md). Save the evidence and project-fit decision by default within that request; honor read-only or draft instructions. A review does not authorize installing a candidate or changing application repositories.
+
 ## Maintaining records
 
 - Preserve the distinction between documentation review and hands-on results.

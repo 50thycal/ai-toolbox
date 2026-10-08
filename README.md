@@ -7,6 +7,7 @@ GitHub home: https://github.com/50thycal/ai-toolbox (public). Discovery instruct
 ## Start here
 
 - Agents: read [AGENTS.md](AGENTS.md), scan [INDEX.md](INDEX.md), then open only relevant entries.
+- Repo reviews: follow [Review Repo for Toolbox](skills/review-repo-for-toolbox/SKILL.md) to assess current project fit and save evidence.
 - People: browse the index or add an entry using [templates/entry.yaml](templates/entry.yaml).
 - New sessions: install the short [discovery rule](integrations/discovery-rule.md) once in each environment. See [setup instructions](docs/new-sessions.md).
 
