@@ -1,0 +1,14 @@
+{
+  "framework": "nextjs",
+  "functions": {
+    "app/api/repo-chat/route.ts": {
+      "maxDuration": 60
+    },
+    "app/api/repo/route.ts": {
+      "maxDuration": 60
+    },
+    "app/api/feed/route.ts": {
+      "maxDuration": 60
+    }
+  }
+}

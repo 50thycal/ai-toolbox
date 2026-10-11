@@ -1,6 +1,6 @@
 # Working with AI Toolbox
 
-This repository is a catalog, not an application. Use it to choose suitable tools and retain verified implementation experience.
+This repository’s primary purpose is a catalog. Use it to choose suitable tools and retain verified implementation experience. The optional read-only web viewer lives in `web/`; follow `web/AGENTS.md` for viewer changes and its build checks. Catalog-only edits still need no application build.
 
 ## Retrieval and selection
 
