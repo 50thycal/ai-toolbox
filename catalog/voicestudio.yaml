@@ -1,0 +1,134 @@
+schema_version: 1
+id: voicestudio
+name: VoiceStudio
+repository: https://github.com/debpalash/VoiceStudio
+description: Local speech studio and Python service for voice cloning, designed voices, narration, longform audio, transcription, and dubbing.
+categories: [audio, ai-agents, developer-workflow, integrations]
+keywords: [text-to-speech, tts, speech-to-text, asr, podcast, narration, elevenlabs-alternative, local-inference, apple-silicon, mcp, omnivoice, omnivoice-studio]
+stage: reviewed
+reviewed_on: '2026-10-15'
+tested_version: null
+compatibility:
+  stacks: [python, fastapi, pytorch, electron, typescript, http, mcp]
+  platforms: [macos-apple-silicon, windows, linux]
+  notes:
+    - Python manifest requires Python 3.11 or newer; packaged Electron app bootstraps its runtime.
+    - Apple Silicon supports MPS and selected MLX engines; Intel Mac runs the UI with a remote backend only.
+    - CUDA acceleration and CPU execution are available; speed and memory depend on the selected engine and hardware.
+    - OpenAI-compatible speech endpoint is not ElevenLabs Text-to-Dialogue compatible.
+    - Build OS Radio uses Next.js, TypeScript, libSQL and Blob storage; local inference needs a separate machine or worker rather than an in-process replacement in its serverless renderer.
+use_when:
+  - Evaluating local narration for Build OS Radio to reduce dependence on paid speech API rendering.
+  - Producing a script with saved speaker profiles through Stories or the chapterized longform renderer.
+  - Adding local file transcription or agent speech tools through HTTP or MCP when that workflow is actually needed.
+avoid_when:
+  - Expecting an unchanged ElevenLabs dialogue client or its voice IDs to work against this service.
+  - Requiring unattended mobile publishing while the only inference machine may be asleep or offline.
+  - Assuming free application source means every downloaded model, tokenizer, voice, and output is cleared for commercial use.
+  - Adding heavyweight speech infrastructure to projects without a demonstrated speech requirement.
+limitations:
+  - Documentation and representative source/test inspection only; no installation, generation, listening comparison, benchmark, or application integration was performed.
+  - Source main reports 0.5.7, while the newest published release inspected is v0.5.6 (2026-09-23); reviewed main behavior must not be assumed to exist unchanged in that installer.
+  - The default OmniVoice pretrained weights are described by upstream as CC-BY-NC; tokenizer components have separate terms. The application AGPL license does not cover these assets.
+  - The current model inventory asserts no completed commercial clearance; unreviewed is distinct from known noncommercial. Alternative engines need asset-specific review.
+  - Language coverage is advertised across 646 languages; naturalness, pronunciation, cloning quality, and dialogue continuity were not validated.
+  - The OpenAI-style speech request accepts one voice and at most 4096 input characters; multi-speaker dialogue needs per-turn orchestration or a longform cast/voice map.
+  - MP3 output is supported through FFmpeg, but sample rate, channels, loudness, chapter timing, and compatibility with the existing MP3 stitcher need verification.
+  - Local-first operation avoids required hosted speech calls; optional remote services, initial downloads, and consent-based analytics mean it is not an unconditional offline guarantee.
+  - Recent open issue reports include generation failures and cloning setup confusion on v0.5.6; these are reports, not defects reproduced in this review.
+requirements:
+  - A compatible local machine or persistent private inference service, with model and output storage.
+  - macOS guide specifies Apple Silicon, macOS 13.3 or newer, and about 10 GB free disk; the actual engine/model set can require more.
+  - Default OmniVoice guide recommends at least 6 GB dedicated GPU VRAM; Apple unified memory is assessed separately, and CPU-only speed remains unmeasured here.
+  - FFmpeg for compressed output and longform assembly; desktop setup manages its audio-tool dependencies.
+  - Model downloads and their applicable terms; a Hugging Face account/token can be needed for gated models or diarization, not every basic workflow.
+  - A consented reference recording and matching transcript for cloning, or an explicitly installed ASR model for reference transcription.
+  - Remote application access requires a private network or encrypted transport, an API key, persistent state, and controlled administration access.
+cost:
+  license: AGPL-3.0-only application; commercial licensing and Pro features are offered separately with price unverified. Model and asset terms are independent.
+  model_usage: Local inference does not require metered hosted speech API calls; optional cloud providers can add usage charges. No actual savings measured.
+  infrastructure: Local electricity, memory, disk, maintenance and machine availability; hosted inference adds recurring compute and storage costs. No hardware purchase recommended by this review.
+evidence:
+  - kind: documentation-and-code-review
+    date: '2026-10-15'
+    upstream_commit: '28d18023436229830debe8e65faf3eba4426f31b'
+    source_manifest_version: '0.5.7'
+    latest_published_release: v0.5.6
+    latest_release_published_at: '2026-09-23T08:53:32Z'
+    outcome: Worth one scoped local Build OS Radio pilot; not yet an adopted renderer or a demonstrated ElevenLabs replacement.
+    documented_capabilities:
+      - Electron studio, local speech backend, HTTP and MCP interfaces, cloning, voice design, dubbing, transcription, and longform export.
+      - Stories and Audiobooks document speaker assignments, chapter progress, resume, and MP3/M4B export.
+    implementation_findings:
+      - OpenAI-compatible speech route resolves an engine and one saved voice/profile, delegates synthesis, and encodes requested formats; MP3 requires FFmpeg.
+      - The canonical longform parser supports chapter headings, voice markers, pauses, and speed/emphasis markers.
+      - The shared audiobook renderer accepts voice_map, caches chapter/segment work, persists resume manifests best-effort, and muxes successful chapters.
+      - Partial chapter failures can still produce output; an adapter must verify completeness before marking an episode published.
+      - Inspected upstream longform tests use a stub synthesizer with real FFmpeg; resume tests check manifest behavior. Their presence does not prove model quality or our integration.
+      - No upstream code, installer, tests, model downloads, or remote speech service was executed during this review.
+    sources:
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/README.md
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/pyproject.toml
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/package.json
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/docs/install/macos.md
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/docs/engines/omnivoice.md
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/docs/performance.md
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/docs/electron-longform.md
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/docs/speech-platform.md
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/docs/mcp.md
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/docs/api-auth.md
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/docs/production-private-api.md
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/backend/api/routers/openai_compat.py
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/backend/api/routers/audiobook.py
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/backend/api/routers/stories.py
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/backend/services/longform_parser.py
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/backend/services/longform_render.py
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/tests/test_longform_e2e.py
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/tests/test_longform_resume.py
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/tests/test_openai_speech_binary_guard_1172.py
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/LICENSE
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/LICENSE-NOTICE.md
+      - https://github.com/debpalash/VoiceStudio/blob/28d18023436229830debe8e65faf3eba4426f31b/docs/licensing/model-inventory.md
+      - https://github.com/debpalash/VoiceStudio/releases/tag/v0.5.6
+      - https://github.com/debpalash/VoiceStudio/issues/2917
+      - https://github.com/debpalash/VoiceStudio/issues/2913
+    project_fit:
+      - project: Build OS Radio
+        confidence: high for identifying the integration need; runtime suitability untested
+        task: Evaluate local two-speaker narration as an alternative to current ElevenLabs rendering.
+        benefit: Potentially reduce hosted TTS usage while retaining authored episode JSON and the existing player.
+        current_evidence:
+          commit: '9dbb6184de5f4fac8f3b523f0ffafae55214a0e3'
+          sources:
+            - https://github.com/50thycal/build_radio/blob/9dbb6184de5f4fac8f3b523f0ffafae55214a0e3/README.md
+            - https://github.com/50thycal/build_radio/blob/9dbb6184de5f4fac8f3b523f0ffafae55214a0e3/package.json
+            - https://github.com/50thycal/build_radio/blob/9dbb6184de5f4fac8f3b523f0ffafae55214a0e3/lib/elevenlabs.ts
+            - https://github.com/50thycal/build_radio/blob/9dbb6184de5f4fac8f3b523f0ffafae55214a0e3/lib/jobs/runner.ts
+            - https://github.com/50thycal/build_radio/blob/9dbb6184de5f4fac8f3b523f0ffafae55214a0e3/lib/audio/stitcher.ts
+        comparison: Current code directly constructs ElevenLabsClient and calls generateDialogue; it already has resumable chunk jobs, a cost ledger, and MP3 frame stitching. No VoiceStudio dependency or provider integration was found in the inspected files.
+        limitation: Needs a renderer adapter or offline export path, new speaker/profile mapping, normalized audio, provider-aware versioning/cost records, and a machine that stays available.
+      - project: Agent coding workflow
+        confidence: provisional
+        task: Local file transcription or speech output through MCP and HTTP.
+        benefit: Could share one speech service across compatible coding clients.
+        limitation: Capability is documented upstream; no current project repository or installed client configuration was verified to require it. No second pilot proposed.
+project_experience: []
+suggested_pilot:
+  project: Build OS Radio
+  status: proposed
+  scope: On an existing compatible local machine, compare one consented two-speaker script of 3 to 5 minutes against an existing ElevenLabs render; include technical names, numbers, and a chapter break.
+  prerequisites:
+    - Record the actual chip, RAM, OS, exact app version/commit and model revision; select assets whose terms cover the intended test.
+    - Keep the experiment outside the deployed publishing pipeline; use an existing baseline render to avoid unapproved API spending.
+  success_criteria:
+    - Every turn appears once, in order, with distinct stable speaker identities and no missing chapter.
+    - Listener accepts naturalness, pacing, and technical pronunciation relative to the baseline; record specific corrections.
+    - Record cold/warm render time, peak memory, disk use, manual repair time, and any failure or restart behavior.
+    - Verify a final MP3 plays and seeks correctly on the intended phone/player; check duration and chapter cue accuracy.
+    - Estimate monthly total cost and local-machine availability from measured runtime before deciding whether savings justify integration.
+  note: Proposal only; no pilot started, application code changed, or spending authorized by this catalog record.
+setup_recipe: null
+history:
+  - date: '2026-10-15'
+    stage: reviewed
+    reason: Added first canonical VoiceStudio record after reviewing current upstream documentation, representative implementation/tests, releases/issues, and current Build OS Radio source. No hands-on evaluation.
