@@ -1,0 +1,139 @@
+schema_version: 1
+id: tokenspeed
+name: TokenSpeed
+repository: https://github.com/lightseekorg/tokenspeed
+description: GPU LLM inference and serving engine with a C++ scheduler, Python execution, modular accelerator kernels, and an SMG-backed OpenAI-compatible HTTP gateway.
+categories: [ai-agents, developer-workflow, deployment]
+keywords: [llm-inference, self-hosting, gpu, cuda, rocm, low-latency, openai-compatible, prefix-cache, speculative-decoding, keyboard, autocorrect]
+stage: reviewed
+reviewed_on: '2026-10-15'
+tested_version: null
+compatibility:
+  stacks: [python, pytorch, cpp, openai-compatible-http, cuda, rocm]
+  platforms: [linux-gpu-server]
+  notes:
+    - Python package requires Python 3.11 or newer; documented nightly environments use Python 3.11-3.13.
+    - Getting-started paths cover NVIDIA CUDA and AMD ROCm 7.2; exact model, quantization, driver, and kernel compatibility must be pinned.
+    - HTTP clients can live in a TypeScript or Python application while inference runs on a separate compatible GPU host.
+    - No native iPhone or Apple Metal execution path was established by the inspected guides; an iPhone keyboard would be a network client.
+    - OpenAI-compatible chat examples do not establish complete parity with every hosted-provider feature or model.
+use_when:
+  - Operating a supported open-weight text model on compatible GPUs, with measured inference latency or throughput as an actual bottleneck.
+  - Reusing repeated prompt prefixes or testing model-specific speculative decoding on a representative workload.
+  - Evaluating a backend for low-latency contextual keyboard suggestions after a keyboard project and serving requirements exist.
+avoid_when:
+  - Trying to accelerate ChatGPT or Claude subscriptions without replacing the underlying model-serving infrastructure.
+  - Replacing the existing ElevenLabs text-to-dialogue audio renderer in Build OS Radio.
+  - Reducing the RAM footprint of a bounded database/catalog worker that has no established GPU inference requirement.
+  - Expecting a ready-made autocorrect model, native keyboard UI, personalized typo model, or a guarantee of instant mobile responses.
+limitations:
+  - README performance claims and vendor-hardware benchmarks were not reproduced; output tokens per second do not measure mobile request-to-suggestion latency.
+  - GPU inference introduces model storage, VRAM, driver/kernel alignment, capacity planning, monitoring, and availability work.
+  - Latest release observed was v0.1.1 dated 2026-10-06; this review inspected a newer main commit, not a hands-on validation of that release.
+  - Main has active dependency and kernel changes; tested model/hardware combinations cannot be inferred from general API compatibility.
+  - Inspected integration tests include a fake-engine gateway readiness/shutdown test; its presence does not establish real-model correctness or benchmark performance.
+  - Open issue 2399 reports streaming cumulative-logprob behavior; issue 2397 reports a repetition-penalty boundary problem. These are issue reports, not reproduced defects in this review.
+  - Optional Mooncake L3 production hardening has an open roadmap; do not infer fleet-wide cache readiness from core serving availability.
+  - The documented development container uses privileged host access and 32 GiB shared memory; it is an example environment, not a verified minimal deployment requirement.
+  - Server-backed keyboard suggestions depend on network availability, queueing, prompt processing, first-token latency, and remaining decode time.
+requirements:
+  - Compatible accelerator host, sufficient model-specific VRAM and host memory, checkpoint storage, and matching CUDA or ROCm dependencies.
+  - Access to chosen model checkpoints; any gated-model account/token and model-license obligations depend on that model.
+  - Pin the runtime, scheduler, SMG gateway, kernels, model revision, and serving options together.
+  - For remote clients, a secured serving endpoint with appropriate access controls; no hosted model-provider API key is inherently required for locally served weights.
+  - For an iOS networked custom keyboard, a native keyboard extension with RequestsOpenAccess and explicit user Allow Full Access.
+cost:
+  license: MIT at repository root; retain inherited file and third-party notices, including Apache-2.0 portions. Model licenses are separate.
+  model_usage: No mandatory hosted-model token charge for self-hosted weights; model access and licenses vary. No usage savings measured.
+  infrastructure: GPU purchase/rental, idle capacity, storage, traffic, power and operational time; no provider quote or break-even measured.
+evidence:
+  - kind: documentation-code-review
+    date: '2026-10-15'
+    reviewed_commit: b1991afa3f522a504f4d05e1adfc27c788f73b40
+    latest_release_observed: v0.1.1
+    outcome: Save for later for current projects. Technically relevant to future GPU model serving, but no current project establishes a need that justifies adding this infrastructure.
+    hands_on: false
+    sources:
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/README.md
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/docs/guides/getting-started.md
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/docs/guides/launching.md
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/docs/recipes/models.md
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/docs/configuration/server.md
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/python/pyproject.toml
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/python/tokenspeed/cli/serve_smg.py
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/python/tokenspeed/runtime/entrypoints/engine.py
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/test/cli/test_serve_smg_integration.py
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/test/cli/test_serve_smg_deepseek_v41.py
+      - https://github.com/lightseekorg/tokenspeed/blob/b1991afa3f522a504f4d05e1adfc27c788f73b40/LICENSE
+      - https://github.com/lightseekorg/tokenspeed/releases/tag/v0.1.1
+      - https://github.com/lightseekorg/tokenspeed/issues/2399
+      - https://github.com/lightseekorg/tokenspeed/issues/2397
+      - https://github.com/lightseekorg/tokenspeed/issues/1793
+    project_fit:
+      - project: Kalshi market catalog
+        verification: Current catalog service and classification-pilot documents plus dependency manifest inspected; README introduction is an older scanner description and was not treated as complete architecture.
+        task: Possible future text-assisted proposals about market rules.
+        benefit: A separately hosted model could supply text outputs if repeated inference becomes a measured workload.
+        limitation: Existing need is bounded discovery, evidence binding, deterministic evaluation, and resource efficiency; inference serving does not solve those problems or authorize reviews/trades.
+        confidence: High for current mismatch; future model workload is provisional.
+        sources:
+          - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/docs/MARKET_CATALOG_SERVICE.md
+          - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/docs/MARKET_CATALOG_REVIEW_PILOT.md
+          - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/requirements.txt
+      - project: Build OS Radio
+        verification: Current README, package manifest, and ElevenLabs provider implementation inspected.
+        task: Audio rendering from authored episode dialogue.
+        benefit: Only an additional future text-drafting service could potentially use TokenSpeed.
+        limitation: Existing renderer calls ElevenLabs text-to-dialogue; TokenSpeed is not a drop-in replacement for its voice rendering or a documented TTS engine.
+        confidence: High for current mismatch.
+        sources:
+          - https://github.com/50thycal/build_radio/blob/9dbb6184de5f4fac8f3b523f0ffafae55214a0e3/README.md
+          - https://github.com/50thycal/build_radio/blob/9dbb6184de5f4fac8f3b523f0ffafae55214a0e3/package.json
+          - https://github.com/50thycal/build_radio/blob/9dbb6184de5f4fac8f3b523f0ffafae55214a0e3/lib/elevenlabs.ts
+      - project: AI Toolbox viewer and Build OS workflow
+        verification: Viewer context endpoint and handoff builder inspected; Build OS README describes a repository-based development protocol.
+        task: Repository research and transfer of source-grounded questions to an assistant.
+        benefit: Could serve a model only if an in-app inference feature is separately added.
+        limitation: Current viewer fetches repository context and constructs a handoff; it has no model-serving gap that TokenSpeed fills. It does not accelerate existing hosted chat sessions.
+        confidence: High for inspected flows.
+        sources:
+          - https://github.com/50thycal/ai-toolbox/blob/7fbd24fe469b604b7af5eb87012290b137558fd7/web/app/api/repo-chat/route.ts
+          - https://github.com/50thycal/ai-toolbox/blob/7fbd24fe469b604b7af5eb87012290b137558fd7/web/lib/repo-chat.ts
+          - https://github.com/50thycal/ai-toolbox/blob/7fbd24fe469b604b7af5eb87012290b137558fd7/web/lib/repo-handoff.ts
+          - https://github.com/50thycal/build-os
+      - project: Proposed custom keyboard
+        verification: User-raised concept only; no keyboard repository, model, device implementation, or benchmark was established.
+        task: Context-aware typo correction and short next-word or phrase suggestions.
+        benefit: Potential inference backend for a compatible correction model; small outputs and repeated prefixes make latency evaluation relevant.
+        limitation: Engine speed does not supply correction quality, personalization, native keyboard access, or network-free typing. Prefer immediate local correction with optional asynchronous contextual suggestions.
+        confidence: Provisional; architecture inference, not tested fit.
+        sources:
+          - https://lightseek.org/tokenspeed/guides/launching
+          - https://developer.apple.com/documentation/uikit/configuring-open-access-for-a-custom-keyboard
+          - https://developer.apple.com/documentation/uikit/uitextdocumentproxy
+    alternatives:
+      - Preserve current direct hosted-assistant workflows and repository handoffs where no application inference runtime exists.
+      - VoiceStudio is already cataloged as reviewed for a proposed Radio narration pilot; that speech-specific candidate addresses audio replacement, whereas TokenSpeed does not.
+      - For a keyboard, establish a local typo-correction baseline and a simple hosted-model baseline before taking on GPU operations.
+      - Scientific Agent Skills and TesterArmy in the catalog address methodology and testing, not inference serving; they are complementary rather than replacements.
+project_experience: []
+suggested_pilot:
+  project: Proposed custom keyboard
+  status: proposed
+  condition: Only if the keyboard proceeds, a compatible model/GPU is available, and server inference is a measured bottleneck; not recommended as immediate infrastructure work.
+  scope: Offline fixed typo/context corpus plus a native-device suggestion prototype; compare the same model/settings on TokenSpeed and an available baseline server, with a local correction fallback.
+  measure:
+    - End-to-end p50/p95 time to a complete usable suggestion on Wi-Fi and cellular, including warm and cold requests.
+    - Correction precision, harmful overcorrections, names/code preservation, suggestion acceptance and stale-response rejection.
+    - GPU/host memory, concurrency, failures, disconnect behavior, operating cost per active typing hour and setup/maintenance effort.
+  success_criteria:
+    - Local typing and basic correction remain responsive offline and never wait for a remote result.
+    - Provisional product target of warm p95 complete suggestions within 250 ms; a design target, not an established capability.
+    - Quality does not regress against the declared baseline; quantify expensive wrong corrections rather than scoring throughput alone.
+    - Reject stale results after further typing or cursor movement; preserve meaning and require user acceptance for substantial rewrites.
+  note: Proposed evaluation only. No model installed, upstream code executed, device test, GPU provisioning, application edit, or live-system change performed.
+setup_recipe: null
+history:
+  - date: '2026-10-15'
+    stage: reviewed
+    reason: Documentation and representative code/tests reviewed at a pinned upstream commit; current project sources checked. Save-for-later verdict, with conditional keyboard concept assessment and no hands-on claims.

@@ -7,6 +7,7 @@ Read this compact index before opening individual entries. Search category, prob
 | [TesterArmy e2e](catalog/testerarmy-e2e.yaml) | Reviewed | testing, browser-automation, ai-qa | TypeScript, Next.js, web, native-mobile | Verifying whole user flows; exploring a changed UI; adding PR checks | Pre-1.0; not yet validated in our apps; phone viewport is not full iPhone emulation |
 | [Scientific Agent Skills](catalog/scientific-agent-skills.yaml) | Reviewed | ai-agents, developer-workflow, data-processing, research-methodology | Agent Skills hosts, Python, offline analysis | Auditing research theses, clustered experiments and bounded exports | No hands-on validation; complements existing governance; RAM/cost benefit unmeasured |
 | [VoiceStudio](catalog/voicestudio.yaml) | Reviewed | audio, ai-agents, developer-workflow, integrations | Python/FastAPI, Electron, Apple Silicon, Windows, Linux, HTTP/MCP | Pilot local Build OS Radio narration; optional agent speech/transcription | Untested; separate inference host and adapter; model terms differ from application AGPL |
+| [TokenSpeed](catalog/tokenspeed.yaml) | Reviewed | ai-agents, developer-workflow, deployment | Python/C++, Linux GPU, CUDA/ROCm, HTTP clients | Self-hosting supported text models when measured inference latency matters | Save for later; GPU operations required; keyboard latency and correction quality untested |
 
 ## Category vocabulary
 
