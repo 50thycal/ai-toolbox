@@ -1,0 +1,212 @@
+schema_version: 1
+id: context-mode
+name: Context Mode
+repository: https://github.com/mksglu/context-mode
+description: Local MCP tools and client hooks that process bulky tool output outside model context, index content
+  with SQLite FTS5, and capture session events for selective retrieval.
+categories:
+- developer-workflow
+- ai-agents
+- data-processing
+keywords:
+- mcp
+- context-window
+- tool-output
+- session-continuity
+- compaction
+- fts5
+- bm25
+- claude-code
+- cursor
+- codex-cli
+- log-analysis
+- local-index
+stage: reviewed
+reviewed_on: '2026-10-16'
+tested_version: null
+compatibility:
+  stacks:
+  - mcp
+  - nodejs
+  - typescript
+  - sqlite-fts5
+  - python
+  - shell
+  platforms:
+  - claude-code
+  - cursor
+  - codex-cli
+  - macos
+  - linux
+  - windows
+  notes:
+  - Developer-host tooling, independent of application runtime; not an application dependency or hosted database
+    replacement.
+  - 'Package requires Node.js >=22.5. Optional execution languages need their own runtimes. SQLite backend varies:
+    Bun built-in, Linux node:sqlite when available, otherwise better-sqlite3.'
+  - README documents automatic Claude Code plugin hooks; MCP-only mode lacks automatic routing. Compatibility in
+    the user's actual clients is unverified.
+  - Cursor docs report a rejected sessionStart event, unsurfaced additional_context, no shipped preCompact hook,
+    and routing via .mdc rules. Marketplace availability is described as pending in the reviewed README.
+  - Codex CLI integration is documented with version-dependent hooks/feature flags. This does not establish compatibility
+    with hosted ChatGPT Work, iPhone apps or connector tools.
+  - Existing AGENTS.md, CLAUDE.md, Build OS records and permissions remain authoritative. Merge necessary routing
+    guidance if piloted; never replace project instructions with an upstream template.
+use_when:
+- A supported coding agent consumes large logs, JSON exports, history or docs and approaches its context limit.
+- Analyze bounded local artifacts in code and return selected facts while retaining full sources for exact follow-up.
+- Search technical documentation or session events while keeping approved decisions and checkpoints in the repository.
+avoid_when:
+- rg, SQL, small outputs or existing bounded scripts already answer the question; more hooks/tools add maintenance.
+- Seeking direct reductions in production RAM, database growth or hosting charges.
+- Seeking permanent shared memory, cross-device chat sync or a replacement for Build OS records.
+- The client cannot run local MCP/hooks, or every external connector response must be intercepted automatically.
+- Seeking OS isolation for arbitrary code or a hosted service exposing substantial context-mode functionality.
+limitations:
+- Documentation and representative source/test review only. No installation, upstream code execution, tests, benchmarks
+  or project integration were performed.
+- README advertises about 98% reduction and longer sessions. BENCHMARK.md reports 96% overall on fixtures and 82%
+  for exact-chunk retrieval. These upstream byte measurements do not establish task accuracy, billed-token savings
+  or savings in our projects.
+- Routing must happen before raw output reaches context. Registering tools does not transparently compress every
+  other MCP/connector response; results depend on client hooks and agent behavior.
+- Summaries and ranked retrieval can omit decisive facts. Preserve exact source, exit status, errors and acceptance
+  criteria for inspection.
+- Session recovery is host/version dependent and best-effort. README fresh-session deletion language differs from
+  sessionstart.mjs age-gated cleanup/resume paths. Do not promise permanent memory or exact retention without measuring
+  it.
+- Sandbox means subprocess execution with process filesystem access, not OS isolation. Executor preserves most environment
+  variables after a targeted denylist; keep host controls and avoid production credentials.
+- README says nothing leaves the machine, but hooks/platform-bridge.mjs forwards events to platform_url/events when
+  valid platform.json credentials exist. Local mode needs no account; verify forwarding is unconfigured before asserting
+  local-only behavior.
+- Elastic License 2.0 is source-available with hosted/managed-service, license-key and notice limitations; not permissive
+  MIT/Apache licensing.
+- Open-issue list returned empty and direct historical issue reads returned 410 Issues are disabled. README-linked
+  reports could not be independently inspected; absence of results is not absence of defects.
+- Five recent default-branch commits inspected were automated install-stat updates. Latest release observed was
+  v1.0.169, published 2026-06-29; recent commits do not establish runtime validation.
+requirements:
+- Supported developer host running local MCP, Node.js >=22.5 and compatible SQLite backend.
+- Writable local content/session storage and required execution runtimes; local CPU/RAM/disk overhead is unmeasured.
+- Client-specific MCP/hook/routing setup preserving project rules and permissions; verify duplicate registration
+  and rollback.
+- Sanitized offline artifacts for evaluation; no production credentials, writes, trading authority or new production
+  service.
+cost:
+  license: Elastic-2.0; royalty-free under license conditions, including restrictions on hosted/managed access to
+    substantial functionality.
+  model_usage: Core execution and FTS5 search require no extra model API or embedding account. Host model/provider
+    usage still applies; net savings unmeasured.
+  infrastructure: Local MCP process, subprocesses, SQLite and hooks; no cloud service required for local mode. Optional
+    Insight/platform pricing and data handling not evaluated.
+evidence:
+- kind: documentation-and-code-review
+  date: '2026-10-16'
+  reviewed_version: 1.0.169
+  reviewed_commit: 40813fe886798bad07c69a43d2ae00a52b4b934d
+  outcome: Worth one scoped developer-workflow pilot, strongest for offline Kalshi catalog/test-log investigation.
+    Reviewed only; no hands-on success or runtime/cost reduction established.
+  inspected:
+  - README/platform docs, manifest/dependencies and complete LICENSE.
+  - src/server.ts tool registration, output filtering/indexing and file boundaries; src/executor.ts subprocess/environment
+    handling; src/store.ts FTS5/BM25 SQL.
+  - hooks/sessionstart.mjs recovery/cleanup, hooks/posttooluse.mjs capture and hooks/platform-bridge.mjs optional
+    forwarding.
+  - tests/security/project-boundary-852.test.ts traversal/symlink and unknown-root cases, plus BENCHMARK.md examples/results.
+    Tests read, not run.
+  - Latest release metadata, five recent commits, issue search/list and attempted direct issue retrieval.
+  sources:
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/README.md
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/package.json
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/docs/platform-support.md
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/src/server.ts
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/src/executor.ts
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/src/store.ts
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/hooks/sessionstart.mjs
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/hooks/posttooluse.mjs
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/hooks/platform-bridge.mjs
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/tests/security/project-boundary-852.test.ts
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/BENCHMARK.md
+  - https://github.com/mksglu/context-mode/blob/40813fe886798bad07c69a43d2ae00a52b4b934d/LICENSE
+  - https://github.com/mksglu/context-mode/releases/tag/v1.0.169
+  - https://github.com/mksglu/context-mode/commits/main
+  - https://api.github.com/repos/mksglu/context-mode/issues/852
+  project_fit:
+  - project: Kalshi development and market-catalog research
+    evidence_status: Current docs/manifest verified; proposed fit, not integration.
+    task: Investigate saved sanitized catalog exports and test failures with bounded local code and selective source
+      retrieval.
+    benefit: Could keep bulky diagnostics out of repeated model context while retaining original evidence.
+    limitation: Does not change collector/query memory, storage guards, strategy evidence, qualification or live
+      execution. Prefer existing bounded scripts when sufficient; context pressure is unmeasured.
+    confidence: High task/stack match; benefit and client compatibility untested.
+    sources:
+    - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/docs/PROJECT_MODEL.md
+    - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/docs/MARKET_CATALOG_SERVICE.md
+    - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/docs/MARKET_CATALOG_STORAGE_GUARD.md
+    - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/docs/workstreams/ACTIVE.md
+    - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/requirements.txt
+  - project: Build OS development workflow
+    evidence_status: Current README verified; proposed complementary use.
+    task: Recover immediate editing/debugging context after compaction in a supported local agent.
+    benefit: Searchable local events could reduce session reorientation work.
+    limitation: Build OS already persists project models, decisions and workstreams in GitHub. Local events add
+      no decision authority or durable cross-client record.
+    confidence: Medium; complementary role clear, incremental value unmeasured.
+    sources:
+    - https://github.com/50thycal/build-os/blob/main/README.md
+  - project: Party Games / Subway
+    evidence_status: Current README/package.json verified; proposed use.
+    task: Summarize geometry/multiplayer test output and search browser diagnostics during Next.js/TypeScript development.
+    benefit: Could reduce test-log and snapshot bulk.
+    limitation: Does not replace deterministic regressions, browser automation or real-phone testing; current output
+      volume has not been measured.
+    confidence: Medium task fit; material incremental benefit unproven.
+    sources:
+    - https://github.com/50thycal/party-games/blob/main/README.md
+    - https://github.com/50thycal/party-games/blob/main/package.json
+  comparison:
+  - Catalog TesterArmy e2e is a reviewed user-flow testing candidate; context-mode could filter diagnostics but
+    supplies no tests.
+  - Scientific Agent Skills is a reviewed methodology/analysis candidate; context-mode handles retrieval/output,
+    not scientific validity.
+  - Build OS is shared durable memory; a local index is supplemental.
+  - rg, bounded Python/SQL scripts and selective reads remain the lower-maintenance baseline. No context-mode installation
+    was established.
+project_experience: []
+suggested_pilot:
+  project: Kalshi development workflow — offline catalog diagnostic task
+  status: proposed
+  scope: One frozen sanitized catalog JSON/log fixture and one saved failing-test output in local Claude Code. Compare
+    the same investigation from clean sessions with/without pinned context-mode; use existing bounded scripts as
+    baseline. No production access or application dependency changes.
+  success_criteria:
+  - Find every preselected fact and seeded failure with exact source references; no missed errors or permission
+    widening.
+  - At least 50% fewer returned tool-output bytes; record host input/output/cache tokens separately and do not equate
+    bytes with dollars.
+  - Finish within 20% of baseline elapsed time; report local peak RSS, disk growth, hook overhead and reruns. No
+    Railway savings attribution.
+  - Force one compaction and verify current task, edited files and pending decision recovery against repository
+    records.
+  - Verify unconfigured remote forwarding, existing deny rules, single hook firing and clean rollback without replacing
+    instructions.
+  measure:
+  - answer-completeness
+  - exact-source-retrieval
+  - tool-output-bytes
+  - host-model-usage
+  - elapsed-time
+  - local-peak-rss
+  - disk-growth
+  - hook-reliability
+  - compaction-recovery
+  - setup-and-rollback-effort
+  note: Proposed only. No pilot begun; this record does not authorize installation or live-system changes.
+setup_recipe: null
+history:
+- date: '2026-10-16'
+  stage: reviewed
+  reason: Initial documentation/code review at upstream 40813fe886798bad07c69a43d2ae00a52b4b934d (package 1.0.169);
+    checked current projects, documented limitations and one proposed offline pilot. No hands-on test.

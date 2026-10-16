@@ -23,6 +23,7 @@ Tools that solve a concrete problem in our applications. Each entry records when
 | [Scientific Agent Skills](catalog/scientific-agent-skills.yaml) | AI agents, research methodology, data processing | Reviewed | Documentation/code review only; proposed offline pilot, no hands-on validation |
 | [VoiceStudio](catalog/voicestudio.yaml) | Audio, local speech, integrations | Reviewed | Documentation and code review only; proposed Build OS Radio pilot |
 | [TokenSpeed](catalog/tokenspeed.yaml) | AI agents, GPU inference, deployment | Reviewed | Documentation/code review only; save for later; conditional keyboard concept |
+| [Context Mode](catalog/context-mode.yaml) | Developer workflow, context management | Reviewed | Documentation/code review only; proposed offline diagnostic pilot |
 
 ## Maintenance
 
