@@ -20,6 +20,7 @@ Tools that solve a concrete problem in our applications. Each entry records when
 | Tool | Category | Stage | Experience |
 | --- | --- | --- | --- |
 | [TesterArmy e2e](catalog/testerarmy-e2e.yaml) | Testing, browser automation, AI QA | Reviewed | Documentation review only; no hands-on validation |
+| [Scientific Agent Skills](catalog/scientific-agent-skills.yaml) | AI agents, research methodology, data processing | Reviewed | Documentation/code review only; proposed offline pilot, no hands-on validation |
 
 ## Maintenance
 

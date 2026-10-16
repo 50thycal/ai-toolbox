@@ -1,0 +1,199 @@
+schema_version: 1
+id: scientific-agent-skills
+name: Scientific Agent Skills (K-Dense)
+repository: https://github.com/K-Dense-AI/scientific-agent-skills
+description: Portable research skills with procedural guidance, local validators, experiment-design helpers and
+  scientific Python recipes; selectively useful for offline hypothesis and data-quality review.
+categories:
+- ai-agents
+- developer-workflow
+- data-processing
+- research-methodology
+keywords:
+- claude-scientific-skills
+- K-Dense
+- hypothesis-generation
+- experimental-design
+- statistical-power
+- statistical-analysis
+- polars
+- bounded-eda
+- preregistration
+- clustered-outcomes
+- low-memory-analytics
+stage: reviewed
+reviewed_on: '2026-10-16'
+tested_version: null
+compatibility:
+  stacks:
+  - agent-skills
+  - python
+  - csv
+  - json
+  - parquet
+  platforms:
+  - cursor
+  - claude-code
+  - codex
+  - local-analysis
+  notes:
+  - README advertises compatible Agent Skills hosts and plugin.json packaging; installation/discovery in the user's
+    hosts was not tested.
+  - Repository tooling requires Python 3.13+; selected hypothesis-generation and core EDA tools require Python 3.11+
+    standard library. Experimental design and statistical analysis declare Python 3.12+; Polars skill declares Python
+    3.10+.
+  - Use separate environments for optional scientific packages; the reviewed experimental-design and statistical-power
+    examples pin different pandas versions. Skill files do not install their dependencies.
+  - Use as an offline research aid. It does not integrate with the existing experiment registry, market catalog,
+    database permissions, qualification rules or trade execution.
+use_when:
+- Auditing a proposed research thesis for rival explanations, falsifiable predictions, estimands, missingness, leakage
+  and explicit exploratory versus confirmatory scope.
+- Designing event-clustered treatment/control allocation and justified sensitivity or power calculations before
+  collecting new outcomes.
+- Profiling a bounded exported dataset or considering lazy Polars file processing after identifying a measured bottleneck.
+avoid_when:
+- Seeking an autonomous trading strategy, a calibrated market ranking, a confidence score or authorization to change
+  a live experiment.
+- Existing project SQL, bounded stdlib scripts and Experiment OS contracts already answer the question without additional
+  maintenance.
+- Seeking alarm delivery fixes, native iPhone testing or a replacement speech renderer.
+limitations:
+- Documentation and representative source/test inspection only; no installation, dependency resolution, script execution,
+  benchmarks, model runs or project integration were performed.
+- Most of the 177 advertised skills concern scientific domains outside the current projects. Prefer a pinned topical
+  subset over installing the collection.
+- Hypothesis validators check schema, declarations and internal consistency; passing cannot prove scientific truth,
+  independent outcomes, causal identification or profitability.
+- Generic fixed-horizon tests and power examples do not validate the project's existing sequential gates. Model
+  event/exposure dependence, assignment denominators, missing/unfilled outcomes and rare losses explicitly.
+- Polars streaming may reduce intermediate memory, but collect still materializes the final DataFrame and some operations
+  require substantial memory. No RAM, runtime or hosting-cost reduction has been measured.
+- CI runs structural checks and standard-library suites; the workflow explicitly excludes the full scientific dependency
+  sweep. Tests exist, but their presence is not our hands-on result.
+- 'Open citation-management issues #317/#318 report parser and DOI-deduplication defects; these are reports, not
+  reproduced findings, and do not establish defects in the shortlisted skills.'
+- Recent scan-only commits do not establish recent functional testing. Upstream scan/triage results are not a blanket
+  security certification.
+requirements:
+- An Agent Skills-capable host, review of each selected skill's instructions/scripts and a pinned release or commit.
+- Authorized, minimized local exports with preserved timestamps, exposure groups, split boundaries and provenance.
+- No credentials or network are needed by the reviewed hypothesis-generation/core EDA scripts after provisioning
+  Python; optional package installation requires network access.
+- Experimental-design uses NumPy/pandas and pydoe for DOE; statistical-power uses its separately documented SciPy/statsmodels
+  stack. Network/database/hosted-model skills elsewhere have separate access requirements.
+- Retain project-specific governance and compare against the existing research workflow before adding parallel schemas.
+cost:
+  license: Repository MIT; per-skill/dependency licenses must also be checked. Selected hypothesis, EDA, design
+    and analysis skills declare MIT; Polars skill links its upstream license.
+  model_usage: No bundled model inference in the reviewed local validators. Agent-host/model usage remains provider-dependent
+    and unmeasured; other skills may call paid services.
+  infrastructure: Local or isolated batch analysis can avoid adding a resident production service. CPU/RAM/runtime
+    and any model/API cost are unmeasured; no hosting savings claimed.
+evidence:
+- kind: documentation-code-review
+  date: '2026-10-16'
+  reviewed_version: 2.72.0
+  reviewed_commit: a1043ef544e3a100c28e70a736b6cf32554d0677
+  outcome: Worth one scoped offline pilot for hypothesis/experiment review; do not adopt wholesale. No hands-on
+    evaluation.
+  scope: Read README, license, manifests, six skill definitions, representative hypothesis validator, randomization
+    and simulation implementations, test examples, requirements manifest, CI, releases, recent commits and open
+    issue reports.
+  sources:
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/README.md
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/LICENSE.md
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/pyproject.toml
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/plugin.json
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/hypothesis-generation/SKILL.md
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/hypothesis-generation/scripts/validate_hypothesis_schema.py
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/experimental-design/SKILL.md
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/experimental-design/scripts/randomization.py
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/statistical-power/SKILL.md
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/statistical-power/scripts/simulate_power.py
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/statistical-analysis/SKILL.md
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/polars/SKILL.md
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/exploratory-data-analysis/SKILL.md
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/tests/hypothesis-generation/test_scripts.py
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/tests/experimental-design/test_scripts.py
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/tests/polars/test_recipes.py
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/tests/skill-requirements.toml
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/.github/workflows/skill-tests.yml
+  - https://github.com/K-Dense-AI/scientific-agent-skills/releases/tag/v2.72.0
+  - https://github.com/K-Dense-AI/scientific-agent-skills/issues/317
+  - https://github.com/K-Dense-AI/scientific-agent-skills/issues/318
+  - https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/docs/security-triage.md
+  maintenance: Latest release observed v2.72.0 (2026-10-01); latest main commit a1043ef (2026-10-12) updates the
+    security report. Prior name Claude Scientific Skills; no matching existing catalog record found.
+  project_fit:
+  - project: Kalshi research / Experiment OS
+    evidence_status: verified-current-source
+    task: Review one new thesis for estimand, event/exposure clustering, rivals, allocation and prespecified analysis.
+    benefit: Reusable independent checklist and validators may expose omissions before data collection.
+    limitation: Existing Experiment OS remains canonical; bridge to its contract rather than introduce a second
+      lifecycle. Sequential gates need their own valid analysis.
+    confidence: High relevance; incremental benefit and integration untested.
+    sources:
+    - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/docs/EXPERIMENT_OPERATING_SYSTEM_SPEC.md
+    - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/docs/MMSELL_TYPE_RANK_THESIS.md
+    - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/pyproject.toml
+    - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/requirements.txt
+  - project: Kalshi market catalog
+    evidence_status: verified-current-source
+    task: Audit bounded offline exports for leakage, missingness, provenance and exposure grouping; consider lazy
+      Polars only for a measured file-analysis bottleneck.
+    benefit: Could improve evidence quality without adding a production service.
+    limitation: Does not supply missing opportunity telemetry, verified independence, calibrated confidence or automatic
+      market qualification. Current bounded SQLite/SQL processing already addresses memory constraints.
+    confidence: High research relevance; performance benefit unmeasured.
+    sources:
+    - https://github.com/50thycal/kalshi_bot/blob/1508c9a07ee9257fba3f2324c0881a7488c85ae8/docs/MARKET_CATALOG_SERVICE.md
+  - project: Daybreak
+    evidence_status: verified-current-source; proposed-use-only
+    task: Analyze an authorized local CSV/JSON export for settings-versus-outcome patterns after sufficient history
+      exists.
+    benefit: Clear missing-report handling and uncertainty for exploratory comparisons.
+    limitation: Repeated nights from one person and self-selected settings do not establish causal effectiveness;
+      no personal records accessed. Does not fix native alarm delivery.
+    confidence: Moderate later fit; data availability unknown.
+    sources:
+    - https://github.com/50thycal/daybreak-alarm/blob/main/README.md
+    - https://github.com/50thycal/daybreak-alarm/blob/main/package.json
+  - project: Build OS Radio
+    evidence_status: verified-current-source
+    task: Potentially help prepare future research-focused episode evidence.
+    benefit: Only if a scientific evidence-review task is added.
+    limitation: Current need is structured episode authoring and bounded ElevenLabs rendering; collection is not
+      a TTS replacement and adds little to the existing pipeline.
+    confidence: Low immediate fit.
+    sources:
+    - https://github.com/50thycal/build_radio/blob/main/README.md
+    - https://github.com/50thycal/build_radio/blob/main/package.json
+  comparison: The only existing catalog entry, TesterArmy e2e, addresses UI testing rather than research methodology
+    and is preserved unchanged. Kalshi already has preregistration, experiment lifecycle and bounded catalog machinery;
+    the candidate adds reusable review aids, not those capabilities from scratch.
+project_experience: []
+suggested_pilot:
+  project: Kalshi research
+  status: proposed
+  scope: 'One offline comparison on a new, unstarted catalog-backed thesis: baseline existing Experiment OS review
+    versus a pinned hypothesis-generation/experimental-design subset. Use public or sanitized bounded fixtures;
+    adapt outputs to the existing contract.'
+  success_criteria:
+  - All hypotheses remain candidates; source links, rivals, falsifiers, analysis unit and holdout boundary are explicit.
+  - All fixture records sharing an event/exposure group stay together in allocation; unfilled/rejected/missing outcomes
+    and the per-assigned-opportunity denominator remain visible.
+  - Identify a material omission missed by the baseline or demonstrate reduced review effort without lost contract
+    coverage; otherwise keep as reference-only.
+  - Repeat with fixed input/seed/version and compare outputs; record review time, runtime, peak memory, model usage/cost
+    and maintenance effort.
+  - No new production dependency/service, credential access, live order, registry transition or change to frozen
+    experiment gates.
+  note: Proposal only; not started or authorized for execution by this record. Add power simulation only in a separately
+    specified analysis if justified by the chosen design.
+setup_recipe: null
+history:
+- date: '2026-10-16'
+  stage: reviewed
+  reason: Initial documentation/code review against current project sources; added one proposed offline pilot, retained
+    null tested_version and no project experience. Existing catalog record preserved.
