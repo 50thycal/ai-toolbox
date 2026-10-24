@@ -17,3 +17,7 @@ Open “Move or back up my collection” on the old site and export. Import that
 ## Source limits
 
 Unauthenticated GitHub APIs may be rate-limited. Catalog loading falls back to public directory HTML and raw YAML; repo context falls back to common raw README filenames. Missing metadata is labeled. GitHub Trending HTML can change. HN discovers linked stories; Reddit/X badges count attached links, not total traffic. Caches are per server process and can be cold on new instances.
+
+## Visual learning
+
+The Learn tab and repo-card Explain visually links connect to a separate subscription-backed worker. See [worker setup and boundaries](../learning-worker/README.md). Existing repo-chat handoffs and browser collection backups remain available. Generation has no API-key fallback. Until the worker is deployed and configured, the Learn screen explicitly reports setup pending.
