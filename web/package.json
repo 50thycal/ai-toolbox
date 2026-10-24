@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node tests/repo-chat.test.mjs"
+    "test": "node tests/repo-chat.test.mjs && node tests/learning.test.mjs"
   },
   "dependencies": {
     "next": "16.3.4",
