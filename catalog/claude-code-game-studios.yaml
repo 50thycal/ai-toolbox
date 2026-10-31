@@ -1,0 +1,247 @@
+schema_version: 1
+id: claude-code-game-studios
+name: Claude Code Game Studios
+repository: https://github.com/Donchitos/Claude-Code-Game-Studios
+description: Claude Code game-development workflow template with specialist prompts, design and balance reviews,
+  story/evidence gates, and engine-specific shell helpers.
+categories:
+- developer-workflow
+- ai-agents
+- game-development
+- testing
+keywords:
+- CCGS
+- Donchitos
+- Claude-Code-Game-Studios
+- claude-code
+- game-design
+- economy-balance
+- resource-faucets-sinks
+- progression
+- story-done
+- visual-evidence
+- godot
+- unity
+- unreal
+- Straitwatch
+- Subway
+- AI-World-Sim
+stage: reviewed
+reviewed_on: '2026-10-31'
+tested_version: null
+compatibility:
+  stacks:
+  - claude-code
+  - markdown
+  - yaml
+  - bash
+  - python3
+  - godot
+  - unity
+  - unreal
+  platforms:
+  - macos
+  - linux
+  - windows-git-bash
+  notes:
+  - Development-host template, not a game engine, hosted studio, game runtime or application SDK. Tree contains
+    49 agent definitions and 74 skill entrypoints; no package.json, pyproject.toml or requirements.txt dependency
+    manifest was found.
+  - Representative test runner explicitly accepts Godot, Unity and Unreal only, even with --cmd. Browser Canvas/Vite
+    and Next.js applications need adapted paths, commands, evidence capture and review contracts; TypeScript support
+    is not established by generic prompt text.
+  - Claude Code project hooks/settings and question/delegation APIs are host-specific. No compatibility with ChatGPT
+    Work, Codex CLI, mobile clients or subscription inference was tested.
+  - Upstream offers minimal/standard/full rigor and collaborative/guided/autonomous settings. Minimal can waive
+    automated logic tests; retain each existing project's stronger test requirements.
+  - Existing AGENTS.md, Build OS decisions and project-specific playtest skills stay authoritative. Do not replace
+    them or bulk-copy .claude/settings.json to adopt a checklist.
+use_when:
+- Reviewing an explicit game economy or progression model against stated targets, resource faucets/sinks and dominant-strategy
+  risks.
+- Adding acceptance-criterion traceability, retained visual evidence and stale-evidence checks to a bounded game
+  feature.
+- Considering a new Godot/Unity/Unreal project after selecting that engine and verifying its current official documentation.
+avoid_when:
+- Seeking an autonomous idea-to-shipped-game service, measured quality improvement, or proof that 49 roles outperform
+  an existing focused workflow.
+- Seeking direct integration with an existing Vite/Canvas or Next.js runtime, an iPhone build pipeline, production
+  reliability repair or lower inference RAM.
+- Existing seeded sweeps, reducer tests and Build OS records already solve the task; extra registries and approval
+  loops would duplicate maintenance.
+- Interpreting a game-design balance review as scientific validation of AI behavior, calibrated model trust or causal
+  evidence.
+limitations:
+- Documentation and representative code/spec review only. No installation, upstream code execution, engine launch,
+  test run, model session, benchmark or application integration was performed.
+- README describes internal game-building comparisons and successful engine checks, but does not ship those games.
+  These are upstream claims, not reproduced results; document volume is not evidence of game quality.
+- Balance-check is primarily a model-guided analysis procedure using data and declared targets. Its no-data and
+  NOT ASSESSED paths are useful, but it does not supply this portfolio's deterministic simulation or automatically
+  prove balanced play.
+- studio-tests ships structural and behavioral Markdown specifications for the framework, not this portfolio's game
+  tests. Presence of specs and upstream release claims do not establish independently passing CI; no .github/workflows
+  files were found at the reviewed tree.
+- Evidence screenshots can demonstrate layout/presence but not timing, feel, audio, real-device touch behavior or
+  long-run simulation reliability. story-done allows deferred playtest criteria; preserve project-specific acceptance
+  gates.
+- Framework paths, registries, helper scripts and settings are coupled. Extracting one SKILL.md is not a self-contained
+  installation; full adoption creates upgrade/merge work.
+- 'Open issue #147 reports non-atomic stage writes at this exact commit; open PR #148 proposes a fix. Static inspection
+  shows project.yaml written before stage.txt and no paired rollback, but the failure scenario was not reproduced.'
+- 'Open issue #143 reports inaccuracies in version-qualified Godot reference guidance. Treat as a report, not an
+  independently verified engine defect; use official engine docs for consequential decisions.'
+- Hooks can read project files and write local state/logs; host model processing and filesystem permissions still
+  apply. Optional update-check contacts GitHub for releases and can be disabled. No privacy or security certification
+  was performed.
+requirements:
+- Claude Code account/entitlement and a developer host with Git, Bash and Python 3; jq recommended by upstream.
+  Native Claude Code install is documented; npm install route requires Node.js 22+.
+- Engine installation and engine-specific test tooling for full workflow use; runtime hosting still follows the
+  application's own stack.
+- Explicit mapping of source/data/test/evidence paths and preservation of project instructions, custom skills, historical
+  data and access controls before any future integration.
+- A pinned, isolated project snapshot and bounded fixtures for a pilot; avoid live application mutation or changing
+  simulation rules merely to evaluate the workflow.
+cost:
+  license: MIT; preserve copyright and permission notice for copied substantial portions. Host services, model access
+    and engines have separate terms.
+  model_usage: Claude Code usage applies. Three director prompts request Opus, others use Sonnet or inherit the
+    session model; number of calls, subscription quota impact, API spend and net benefit are unmeasured. No free
+    or ChatGPT-subscription execution claim.
+  infrastructure: No new hosted service or GPU is required by the template itself. Developer machine, engine/browser
+    tools, local artifacts and optional CI consume resources; setup, runtime and maintenance costs are unmeasured.
+evidence:
+- kind: documentation-and-code-review
+  date: '2026-10-31'
+  reviewed_version: v1.2.0
+  reviewed_commit: 05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418
+  outcome: Worth one scoped pilot of selected game-balance/evidence practices; do not adopt the complete studio
+    for current browser applications. Reviewed only; no hands-on success established.
+  inspected:
+  - README, complete MIT license, project.yaml and settings hook registrations; setup requirements and selective-upgrade/merge
+    guidance.
+  - balance-check input/target handling and analysis procedure; story-done criterion/evidence gates and run-and-observe
+    procedure.
+  - economy-designer prompt/frontmatter, test-run engine parser, set-stage write ordering and update-check helper.
+  - studio-tests README and representative balance-check/story-done behavioral specification sections; read, not
+    run.
+  - Latest five releases and five default-branch commits; latest release v1.2.0 published 2026-10-19. Relevant open
+    issues and proposed stage-write fix reviewed; issue reports not reproduced.
+  - 'All five pre-existing catalog entries and INDEX searched for canonical URL/name/CCGS alias: no existing entry
+    found. Existing records preserved.'
+  sources:
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/README.md
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/LICENSE
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/project.yaml
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/.claude/settings.json
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/.claude/docs/setup-requirements.md
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/UPGRADING.md
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/.claude/skills/balance-check/SKILL.md
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/.claude/skills/story-done/SKILL.md
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/.claude/docs/run-and-observe.md
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/.claude/agents/economy-designer.md
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/.claude/scripts/test-run.sh
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/.claude/scripts/set-stage.sh
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/.claude/hooks/update-check.sh
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/studio-tests/README.md
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/studio-tests/skills/analysis/balance-check.md
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/blob/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418/studio-tests/skills/readiness/story-done.md
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/releases/tag/v1.2.0
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/commits/05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/issues/147
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/pull/148
+  - https://github.com/Donchitos/Claude-Code-Game-Studios/issues/143
+  project_fit:
+  - project: Straitwatch / td_cargo_ship — V3 Armory and weapon progression
+    evidence_status: Current default-branch README, manifest, V3 plan, Armory data, sweep implementation and existing
+      playtest skills inspected; proposed fit, not integration.
+    task: Audit stated upgrade targets, card/drop progression and dominant loadout risks, then link each claim to
+      existing seeded sweep output and observed UI.
+    benefit: Target/no-data discipline and evidence traceability could make a tuning recommendation easier to audit.
+    limitation: Vite/TypeScript Canvas app, not a supported engine. Existing seesaw-eval, playtest-fidelity, Vitest,
+      browser smoke and V3 sweeps already cover much of this. Classic skills are not assumed valid for every V3
+      rule.
+    confidence: High relevance of task/stack evidence; incremental benefit untested.
+    sources:
+    - https://github.com/50thycal/td_cargo_ship/blob/dfbed68bab66fa6f9e0f82ad9da80c0c3594e682/README.md
+    - https://github.com/50thycal/td_cargo_ship/blob/dfbed68bab66fa6f9e0f82ad9da80c0c3594e682/package.json
+    - https://github.com/50thycal/td_cargo_ship/blob/dfbed68bab66fa6f9e0f82ad9da80c0c3594e682/docs/design/v3-plan.md
+    - https://github.com/50thycal/td_cargo_ship/blob/dfbed68bab66fa6f9e0f82ad9da80c0c3594e682/src/v3/data/armory.ts
+    - https://github.com/50thycal/td_cargo_ship/blob/dfbed68bab66fa6f9e0f82ad9da80c0c3594e682/tools/v3/sweep.ts
+    - https://github.com/50thycal/td_cargo_ship/blob/dfbed68bab66fa6f9e0f82ad9da80c0c3594e682/.claude/skills/seesaw-eval/SKILL.md
+    - https://github.com/50thycal/td_cargo_ship/blob/dfbed68bab66fa6f9e0f82ad9da80c0c3594e682/.claude/skills/playtest-fidelity/SKILL.md
+    reviewed_branch: claude/mobile-game-predator-prey-tu1t5k
+    reviewed_commit: dfbed68bab66fa6f9e0f82ad9da80c0c3594e682
+  - project: Party Games / Subway
+    evidence_status: Current README, package manifest, active workstream board, WS-007 and strategy-classifier source
+      inspected; proposed fit only.
+    task: Review debt/cash/progression changes and strategy-threshold questions against actual playtest evidence;
+      require visible UI evidence for touched game states.
+    benefit: Explicit missing-input findings and criterion-to-evidence mapping could improve review clarity.
+    limitation: Next.js 14/React 18/Turso with deterministic reducers and post-hoc heuristics. Build OS v0.12 already
+      governs work; generic balance targets cannot decide owner rules or prove classifier calibration. Current board
+      still calls for owner playtests.
+    confidence: High task fit; medium incremental workflow fit, untested.
+    sources:
+    - https://github.com/50thycal/party-games/blob/b5fd0d1fa18791c0512f370cda679d37c80c739f/README.md
+    - https://github.com/50thycal/party-games/blob/b5fd0d1fa18791c0512f370cda679d37c80c739f/package.json
+    - https://github.com/50thycal/party-games/blob/b5fd0d1fa18791c0512f370cda679d37c80c739f/docs/workstreams/ACTIVE.md
+    - https://github.com/50thycal/party-games/blob/b5fd0d1fa18791c0512f370cda679d37c80c739f/docs/workstreams/WS-007-subway-strategy-telemetry.md
+    - https://github.com/50thycal/party-games/blob/b5fd0d1fa18791c0512f370cda679d37c80c739f/src/games/subway/strategy/classifiers.ts
+    reviewed_commit: b5fd0d1fa18791c0512f370cda679d37c80c739f
+  - project: AI World Sim
+    evidence_status: Current README/manifest, community/actionable-village design notes and community implementation
+      inspected; proposed fit only.
+    task: Audit resource/job/coin flows and distinguish observable village UI claims from unresolved long-run or
+      behavioral questions.
+    benefit: Faucet/sink and missing-target checklists may identify specification gaps before a new simulation treatment.
+    limitation: Node 24/Canvas/SQLite with pinned Codex inference and Playwright checks; CCGS is development guidance,
+      not a replacement for villager inference, diagnostics, reproducibility or scientific control design. No live
+      run inspected.
+    confidence: Medium; overlap in economy modeling, limited operational/scientific value.
+    sources:
+    - https://github.com/50thycal/ai_world_sim/blob/12f7864be82cfa9bef15b658f0d2de6e225e94ed/README.md
+    - https://github.com/50thycal/ai_world_sim/blob/12f7864be82cfa9bef15b658f0d2de6e225e94ed/package.json
+    - https://github.com/50thycal/ai_world_sim/blob/12f7864be82cfa9bef15b658f0d2de6e225e94ed/docs/COMMUNITY_VILLAGE.md
+    - https://github.com/50thycal/ai_world_sim/blob/12f7864be82cfa9bef15b658f0d2de6e225e94ed/docs/ACTIONABLE_VILLAGE.md
+    - https://github.com/50thycal/ai_world_sim/blob/12f7864be82cfa9bef15b658f0d2de6e225e94ed/src/community.js
+    reviewed_commit: 12f7864be82cfa9bef15b658f0d2de6e225e94ed
+  comparison:
+  - Build OS v0.12 already provides owner decisions, project memory and review flow; retain it as the shared protocol
+    rather than adding a competing studio hierarchy.
+  - Straitwatch's seesaw-eval/playtest-fidelity and seeded V3 sweeps are the baseline. Evaluate only whether borrowed
+    target/evidence discipline adds a material finding.
+  - TesterArmy e2e is a reviewed browser-testing candidate; CCGS specifies what evidence to require but does not
+    supply browser automation for these applications.
+  - Scientific Agent Skills is a reviewed research-methodology candidate; game balance and narrative quality do
+    not establish causal or statistical validity.
+  - Context Mode is a reviewed context-management candidate; CCGS read guards/checkpoints partly overlap but do
+    not replace local retrieval or demonstrate token savings.
+project_experience: []
+suggested_pilot:
+  project: Straitwatch V3 — one Armory progression review
+  status: proposed
+  scope: In an isolated copy pinned to the recorded default-branch commit, review one Armory bay using existing
+    data, explicit owner-approved targets and a frozen seeded-sweep fixture. Compare existing project workflow with
+    an adapted CCGS balance/evidence checklist. If a representative change is approved separately, use existing
+    Vitest and browser smoke tooling to verify it; no engine migration, full-template installation or live deployment.
+  success_criteria:
+  - Every numerical finding names a source, stated target and measured evidence; missing targets and unavailable
+    runs are NOT ASSESSED, with zero invented measurements.
+  - Produce at least one owner-accepted actionable finding absent from the baseline review, or conclude that the
+    template adds insufficient value.
+  - Cover each chosen acceptance criterion with actual test output or opened retained browser screenshots; changing
+    a covered file must flag evidence for recheck.
+  - Preserve existing playtest skills, rules, saves, Build OS records and test requirements. Record clean rollback
+    and any required helper/path adaptations.
+  - Measure elapsed time, model usage or quota where available, calls/retries, setup effort, false findings and
+    maintenance burden against the baseline; report unavailable cost data as unknown.
+  note: Proposed only. No pilot begun or authorized by this catalog record.
+setup_recipe: null
+history:
+- date: '2026-10-31'
+  stage: reviewed
+  reason: Initial documentation/code review at 05ad7c8a5b8aa2aa86bbd3439ae7cf7295cac418 (v1.2.0); checked current
+    default-branch project evidence and existing tools. Added one proposed selective pilot; no upstream execution
+    or integration.

@@ -9,9 +9,10 @@ Read this compact index before opening individual entries. Search category, prob
 | [VoiceStudio](catalog/voicestudio.yaml) | Reviewed | audio, ai-agents, developer-workflow, integrations | Python/FastAPI, Electron, Apple Silicon, Windows, Linux, HTTP/MCP | Pilot local Build OS Radio narration; optional agent speech/transcription | Untested; separate inference host and adapter; model terms differ from application AGPL |
 | [TokenSpeed](catalog/tokenspeed.yaml) | Reviewed | ai-agents, developer-workflow, deployment | Python/C++, Linux GPU, CUDA/ROCm, HTTP clients | Self-hosting supported text models when measured inference latency matters | Save for later; GPU operations required; keyboard latency and correction quality untested |
 | [Context Mode](catalog/context-mode.yaml) | Reviewed | developer-workflow, ai-agents, data-processing | Local MCP, Claude Code, Cursor, Codex CLI, Node.js 22.5+ | Filtering bulky logs/exports and recovering local agent context | Untested; client-specific hooks; no direct production RAM savings; optional configured event forwarding |
+| [Claude Code Game Studios](catalog/claude-code-game-studios.yaml) | Reviewed | developer-workflow, ai-agents, game-development, testing | Claude Code, Bash/Python, Godot/Unity/Unreal | Adapt balance reviews and retained visual evidence for browser games | Untested; engine-bound helpers; existing playtest/Build OS workflows overlap |
 
 ## Category vocabulary
 
-`audio`, `testing`, `browser-automation`, `ai-qa`, `ui`, `database`, `authentication`, `deployment`, `ai-agents`, `monitoring`, `developer-workflow`, `data-processing`, `integrations`, `research-methodology`.
+`audio`, `testing`, `browser-automation`, `ai-qa`, `ui`, `database`, `authentication`, `deployment`, `ai-agents`, `monitoring`, `developer-workflow`, `data-processing`, `integrations`, `research-methodology`, `game-development`.
 
 Add a category when a new entry requires it. Category describes purpose; stage describes confidence; project experience describes where it actually worked.

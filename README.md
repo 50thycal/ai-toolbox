@@ -24,6 +24,7 @@ Tools that solve a concrete problem in our applications. Each entry records when
 | [VoiceStudio](catalog/voicestudio.yaml) | Audio, local speech, integrations | Reviewed | Documentation and code review only; proposed Build OS Radio pilot |
 | [TokenSpeed](catalog/tokenspeed.yaml) | AI agents, GPU inference, deployment | Reviewed | Documentation/code review only; save for later; conditional keyboard concept |
 | [Context Mode](catalog/context-mode.yaml) | Developer workflow, context management | Reviewed | Documentation/code review only; proposed offline diagnostic pilot |
+| [Claude Code Game Studios](catalog/claude-code-game-studios.yaml) | Game development, AI agents, testing workflow | Reviewed | Documentation/code review only; proposed selective Straitwatch pilot |
 
 ## Maintenance
 
